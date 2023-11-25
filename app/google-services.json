@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "515544033018",
+    "project_id": "employeerecord-firebase",
+    "storage_bucket": "employeerecord-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515544033018:android:618a1e711bf814bb050b43",
+        "android_client_info": {
+          "package_name": "com.example.employeerecord_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbZFCiPlPHJj8ZyFcS75EVDmgJQrd_2Ss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
