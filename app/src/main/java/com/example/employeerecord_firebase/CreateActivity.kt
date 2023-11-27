@@ -35,7 +35,7 @@ class CreateActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveEmployee(employee: EmployeeData) {
+    fun saveEmployee(employee: EmployeeData) {
         if (isFieldsEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         } else {
@@ -50,7 +50,7 @@ class CreateActivity : AppCompatActivity() {
         }
     }
 
-    private fun isFieldsEmpty(): Boolean {
+    fun isFieldsEmpty(): Boolean {
         return binding.createFirstname.text.isNullOrEmpty() ||
                 binding.createLasttname.text.isNullOrEmpty() ||
                 binding.createAge.text.isNullOrEmpty() ||
@@ -59,7 +59,7 @@ class CreateActivity : AppCompatActivity() {
                 binding.createAddress.text.isNullOrEmpty()
     }
 
-    private fun clearInputFields() {
+    fun clearInputFields() {
         binding.createFirstname.text?.clear()
         binding.createLasttname.text?.clear()
         binding.createAge.text?.clear()
