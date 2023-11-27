@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.employeerecord_firebase.databinding.ActivityReadBinding
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject
 
@@ -24,10 +25,8 @@ class ReadActivity : AppCompatActivity() {
         binding = ActivityReadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerView = binding.employeeRecyclerView
+        recyclerView = findViewById(R.id.employee_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = EmployeeAdapter(employeeList)
-        recyclerView.adapter = adapter
 
         retrieveEmployee()
     }
@@ -36,13 +35,16 @@ class ReadActivity : AppCompatActivity() {
         dbReference.get()
             .addOnSuccessListener { querySnapshot ->
                 employeeList.clear()
+                val snapshots = mutableListOf<DocumentSnapshot>()
                 for (document in querySnapshot.documents) {
                     val employee = document.toObject<EmployeeData>()
                     employee?.let {
                         employeeList.add(it)
+                        snapshots.add(document)
                     }
                 }
-                adapter.notifyDataSetChanged()
+                adapter = EmployeeAdapter(employeeList, snapshots)
+                recyclerView.adapter = adapter
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this@ReadActivity, e.message, Toast.LENGTH_SHORT).show()
